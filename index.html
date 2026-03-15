@@ -90,12 +90,17 @@
             
             <div class="bg-[#78C7C7] px-6 pt-10 pb-16 shrink-0 relative">
                 <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 flex items-center justify-center shrink-0 relative">
-                            <img src="./logo-radar-acs.png" alt="Logo Radar" class="w-full h-full object-contain bg-white/20 backdrop-blur-md rounded-full p-1 border border-white/30" onerror="this.onerror=null; this.outerHTML='<div class=\'w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center\'><i data-lucide=\'radar\' class=\'w-5 h-5 text-white\'></i></div>'; lucide.createIcons();">
+                    <div class="flex items-center gap-4">
+                        <div class="w-20 h-20 flex items-center justify-center shrink-0 relative">
+                            <img 
+                                src="./logo-radar-acs.png" 
+                                alt="Logo Radar Vacinal do ACS"
+                                class="w-full h-full object-contain"
+                                onerror="this.onerror=null; this.outerHTML='<div class=\'w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center\'><i data-lucide=\'radar\' class=\'w-6 h-6 text-white\'></i></div>'; lucide.createIcons();"
+                            >
                         </div>
                         <div>
-                            <h1 class="text-xl font-bold text-white leading-tight drop-shadow-sm">Radar Vacinal do ACS</h1>
+                            <h1 class="text-[28px] font-bold text-white leading-tight drop-shadow-sm">Radar Vacinal do ACS</h1>
                             <p class="text-white/90 text-[10px] font-medium tracking-wide">FERRAMENTA GRATUITA PARA TERRITÓRIO</p>
                         </div>
                     </div>
@@ -500,17 +505,14 @@
 
             applyProfileToDom() {
                 const p = this.state.profile;
-                // Formulário de perfil
                 document.getElementById('profAcs').value = p.name;
                 document.getElementById('profEquipe').value = p.equipe;
                 document.getElementById('profMicroarea').value = p.microarea;
                 
-                // Ficha individual
                 document.getElementById('ficha-acs-nome').textContent = p.name || '___________________';
                 document.getElementById('ficha-acs-eq').textContent = p.equipe || '___________________';
                 document.getElementById('ficha-acs-ma').textContent = p.microarea || '______';
 
-                // Roteiro de Busca Ativa
                 document.getElementById('print-acs-nome').textContent = p.name || '';
                 document.getElementById('print-acs-eq').textContent = p.equipe || '';
                 document.getElementById('print-acs-ma').textContent = p.microarea || '';
@@ -593,7 +595,6 @@
                 });
                 document.getElementById(`tab-${tabName}`).classList.remove('hidden');
                 
-                // Aplica formatação de visualização de impressão nativa na tab-ficha se ativada
                 if(tabName === 'ficha') {
                     document.getElementById('export-target').classList.add('print:block');
                 }
@@ -667,12 +668,11 @@
                     return { ...child, doses: res.doses.filter(d => d.status === 'delayed'), ageText: this.getAgeText(child.birthDate) };
                 }).filter(c => c.doses.length > 0);
 
-                // Nova Regra de Ordenação: 1º qtde de atraso, 2º idade (criança mais nova), 3º alfabética
                 dataList.sort((a, b) => {
                     if (b.doses.length !== a.doses.length) return b.doses.length - a.doses.length;
                     const dateA = new Date(a.birthDate).getTime();
                     const dateB = new Date(b.birthDate).getTime();
-                    if (dateA !== dateB) return dateB - dateA; // data maior = mais jovem (vem primeiro)
+                    if (dateA !== dateB) return dateB - dateA; 
                     return a.name.localeCompare(b.name);
                 });
 
@@ -690,13 +690,12 @@
                     return; 
                 }
 
-                // Resumo no topo da busca ativa
                 summaryEl.innerHTML = `
                     <p class="text-sm font-bold text-red-700 bg-red-50 p-3 rounded-lg border border-red-200 mb-2 shadow-sm text-center flex items-center justify-center gap-2">
                         <i data-lucide="alert-triangle" class="w-4 h-4"></i> ${dataList.length} criança(s) com pendência vacinal
                     </p>`;
 
-                document.getElementById('print-acs-nome').classList.remove('hidden'); // garante exibir se houver
+                document.getElementById('print-acs-nome').classList.remove('hidden'); 
 
                 listEl.innerHTML = dataList.map(c => `
                     <div class="bg-white border-2 border-slate-200 print-border rounded-xl p-3 shadow-sm mb-3 break-inside-avoid">
