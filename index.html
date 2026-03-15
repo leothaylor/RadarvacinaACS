@@ -45,7 +45,6 @@
 </head>
 <body class="text-slate-800 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden">
 
-    <!-- Modal Dicionário -->
     <div id="modal-dict" class="fixed inset-0 z-50 bg-slate-900/40 hidden flex-col justify-end backdrop-blur-sm view-transition">
         <div class="bg-white w-full max-w-md mx-auto h-[75vh] rounded-t-3xl shadow-2xl flex flex-col slide-up">
             <div class="flex justify-between items-center px-6 py-5 border-b border-slate-100">
@@ -63,7 +62,6 @@
         </div>
     </div>
 
-    <!-- Modal Editar Nome e Data -->
     <div id="modal-edit-name" class="fixed inset-0 z-[60] bg-slate-900/50 hidden flex-col justify-center items-center backdrop-blur-sm view-transition px-4">
         <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl flex flex-col slide-up p-5 relative">
             <h3 class="text-lg font-bold text-slate-800 mb-2">Editar Paciente</h3>
@@ -82,92 +80,87 @@
 
             <div class="flex gap-2 mt-5">
                 <button onclick="document.getElementById('modal-edit-name').classList.add('hidden')" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors text-sm">Cancelar</button>
-                <button onclick="app.saveEditedName()" class="flex-1 bg-brand text-white font-bold py-3 rounded-xl shadow-md hover:bg-teal-600 transition-colors text-sm">Salvar Alterações</button>
+                <button onclick="app.saveEditedName()" class="flex-1 bg-[#78C7C7] text-white font-bold py-3 rounded-xl shadow-md hover:bg-teal-600 transition-colors text-sm">Salvar Alterações</button>
             </div>
         </div>
     </div>
 
-    <!-- Tela Principal (Home) -->
     <div id="view-home" class="flex-1 flex flex-col w-full max-w-md bg-slate-50 shadow-2xl overflow-hidden relative">
         <div class="flex-1 overflow-y-auto pb-24 relative z-0">
             
-            <div class="bg-gradient-to-br from-teal-500 to-sky-700 px-6 pt-10 pb-16 shrink-0 relative">
+            <div class="bg-[#78C7C7] px-6 pt-10 pb-16 shrink-0 relative">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
-                            <i data-lucide="radar" class="w-5 h-5 text-white"></i>
+                        <div class="w-12 h-12 flex items-center justify-center shrink-0 relative">
+                            <img src="./logo-radar-acs.png" alt="Logo Radar" class="w-full h-full object-contain bg-white/20 backdrop-blur-md rounded-full p-1 border border-white/30" onerror="this.onerror=null; this.outerHTML='<div class=\'w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center\'><i data-lucide=\'radar\' class=\'w-5 h-5 text-white\'></i></div>'; lucide.createIcons();">
                         </div>
                         <div>
-                            <h1 class="text-xl font-bold text-white leading-tight">Radar Vacinal do ACS</h1>
-                            <p class="text-teal-50 text-[10px] font-medium tracking-wide">FERRAMENTA GRATUITA PARA TERRITÓRIO</p>
+                            <h1 class="text-xl font-bold text-white leading-tight drop-shadow-sm">Radar Vacinal do ACS</h1>
+                            <p class="text-white/90 text-[10px] font-medium tracking-wide">FERRAMENTA GRATUITA PARA TERRITÓRIO</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-4 gap-2 text-center mb-5 mt-4">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-2 border border-white/20">
-                        <p class="text-[9px] text-teal-100 font-bold uppercase">Cadastros</p>
-                        <p class="text-lg font-black text-white" id="metric-total">0</p>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-2 border border-white/30 shadow-sm">
+                        <p class="text-[9px] text-white/90 font-bold uppercase">Cadastros</p>
+                        <p class="text-lg font-black text-white drop-shadow-sm" id="metric-total">0</p>
                     </div>
-                    <div class="bg-red-500/20 backdrop-blur-sm rounded-xl p-2 border border-red-500/30">
-                        <p class="text-[9px] text-red-200 font-bold uppercase">Atraso</p>
-                        <p class="text-lg font-black text-white" id="metric-atraso">0</p>
+                    <div class="bg-red-500/80 backdrop-blur-sm rounded-xl p-2 border border-red-500 shadow-sm">
+                        <p class="text-[9px] text-white font-bold uppercase">Atraso</p>
+                        <p class="text-lg font-black text-white drop-shadow-sm" id="metric-atraso">0</p>
                     </div>
-                    <div class="bg-amber-500/20 backdrop-blur-sm rounded-xl p-2 border border-amber-500/30">
-                        <p class="text-[9px] text-amber-200 font-bold uppercase">Atenção</p>
-                        <p class="text-lg font-black text-white" id="metric-atencao">0</p>
+                    <div class="bg-amber-500/80 backdrop-blur-sm rounded-xl p-2 border border-amber-500 shadow-sm">
+                        <p class="text-[9px] text-white font-bold uppercase">Atenção</p>
+                        <p class="text-lg font-black text-white drop-shadow-sm" id="metric-atencao">0</p>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-2 border border-white/20">
-                        <p class="text-[9px] text-teal-100 font-bold uppercase">Em dia</p>
-                        <p class="text-lg font-black text-white" id="metric-emdia">0</p>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-2 border border-white/30 shadow-sm">
+                        <p class="text-[9px] text-white/90 font-bold uppercase">Em dia</p>
+                        <p class="text-lg font-black text-white drop-shadow-sm" id="metric-emdia">0</p>
                     </div>
                 </div>
 
-                <div class="relative">
-                    <i data-lucide="search" class="absolute left-4 top-3 w-4 h-4 text-white/60"></i>
+                <div class="relative shadow-sm">
+                    <i data-lucide="search" class="absolute left-4 top-3 w-4 h-4 text-slate-500"></i>
                     <input type="text" id="searchInput" onkeyup="app.filterHome()" placeholder="Buscar por nome ou apelido..." 
-                        class="w-full bg-black/10 border border-white/20 backdrop-blur-md rounded-2xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-white/60 outline-none focus:border-white/50 transition-colors">
+                        class="w-full bg-white border border-transparent rounded-2xl pl-10 pr-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-white/50 transition-all">
                 </div>
             </div>
 
-            <!-- Botões de Ação Principal -->
             <div class="px-5 -mt-6 relative z-10 flex gap-2 overflow-x-auto hide-scrollbar mb-4">
                 <button onclick="app.setFilter('all')" id="flt-all" class="flt-btn px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-slate-800 text-white shrink-0">Todas</button>
                 <button onclick="app.showBuscaAtiva()" class="px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-red-100 text-red-700 border border-red-200 flex items-center gap-1.5 shrink-0 active:scale-95 transition-transform">
-                    <i data-lucide="map" class="w-3.5 h-3.5"></i> Roteiro Busca Ativa
+                    <i data-lucide="map" class="w-3.5 h-3.5"></i> Busca Ativa
                 </button>
             </div>
 
             <div class="px-5 pb-5">
-                <!-- Meus Dados (ACS) -->
                 <div class="bg-white border border-slate-200 rounded-xl p-3 mb-4 shadow-sm relative transition-all" id="profile-container">
                     <div class="flex justify-between items-center mb-2">
-                        <p class="text-[10px] font-bold text-brand uppercase flex items-center gap-1"><i data-lucide="user-circle" class="w-3 h-3"></i> Seus Dados (Para Impressão)</p>
-                        <button onclick="app.toggleProfileLock()" id="btn-lock-profile" class="text-slate-400 hover:text-brand transition-colors p-1" title="Travar/Destravar campos">
+                        <p class="text-[10px] font-bold text-[#78C7C7] uppercase flex items-center gap-1"><i data-lucide="user-circle" class="w-3 h-3"></i> Seus Dados (Para Impressão)</p>
+                        <button onclick="app.toggleProfileLock()" id="btn-lock-profile" class="text-slate-400 hover:text-[#78C7C7] transition-colors p-1" title="Travar/Destravar campos">
                             <i data-lucide="lock" class="w-3.5 h-3.5"></i>
                         </button>
                     </div>
                     <div class="flex flex-col gap-2 relative">
-                        <!-- Overlay Invisível para prevenir cliques quando travado -->
                         <div id="lock-overlay" class="absolute inset-0 z-10 hidden cursor-pointer" onclick="app.promptUnlock()"></div>
                         
-                        <input type="text" id="profAcs" placeholder="Nome do ACS" onblur="app.saveProfileInline()" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-brand text-xs font-medium text-slate-700 transition-colors">
+                        <input type="text" id="profAcs" placeholder="Nome do ACS" onblur="app.saveProfileInline()" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-[#78C7C7] text-xs font-medium text-slate-700 transition-colors">
                         <div class="flex gap-2">
-                            <input type="text" id="profEquipe" placeholder="Equipe (e-SUS)" onblur="app.saveProfileInline()" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-brand text-xs font-medium text-slate-700 transition-colors">
-                            <input type="text" id="profMicroarea" placeholder="Microárea" onblur="app.saveProfileInline()" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-brand text-xs font-medium text-slate-700 transition-colors">
+                            <input type="text" id="profEquipe" placeholder="Equipe (e-SUS)" onblur="app.saveProfileInline()" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-[#78C7C7] text-xs font-medium text-slate-700 transition-colors">
+                            <input type="text" id="profMicroarea" placeholder="Microárea" onblur="app.saveProfileInline()" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-[#78C7C7] text-xs font-medium text-slate-700 transition-colors">
                         </div>
                     </div>
                 </div>
 
-                <!-- Banner Kit Operacional -->
-                <div class="bg-slate-100 border-2 border-dashed border-slate-300 rounded-xl p-3 mb-4 flex items-center justify-between cursor-pointer hover:bg-slate-200 transition-colors" onclick="alert('Funcionalidade demonstrativa: Aqui você pode inserir o link para seu Kit Operacional pago.')">
+                <div class="bg-slate-100 border border-slate-300 rounded-xl p-3 mb-4 flex items-center justify-between cursor-pointer hover:bg-slate-200 transition-colors" onclick="window.open(KIT_ACS_URL, '_blank')">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-slate-200 rounded-lg flex items-center justify-center shrink-0">
-                            <i data-lucide="briefcase" class="w-5 h-5 text-slate-600"></i>
+                        <div class="w-10 h-10 bg-[#78C7C7]/20 rounded-lg flex items-center justify-center shrink-0 border border-[#78C7C7]/30">
+                            <i data-lucide="briefcase" class="w-5 h-5 text-[#78C7C7]"></i>
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-slate-800">Use com sua prancheta!</h4>
-                            <p class="text-[10px] text-slate-500">Conheça o Kit Operacional ACS</p>
+                            <h4 class="text-xs font-bold text-slate-800">Leve isso pra prancheta</h4>
+                            <p class="text-[10px] text-slate-500 font-medium">Conheça o Kit Operacional ACS</p>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
@@ -176,13 +169,12 @@
                 <div id="children-list" class="space-y-3"></div>
             </div>
             
-            <button onclick="app.showAddForm()" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[200px] bg-brand hover:bg-teal-600 text-white font-bold py-3.5 rounded-full shadow-lg shadow-teal-600/30 transition-transform active:scale-95 flex items-center justify-center gap-2 z-50">
+            <button onclick="app.showAddForm()" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[200px] bg-[#78C7C7] hover:bg-teal-500 text-white font-bold py-3.5 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center gap-2 z-50">
                 <i data-lucide="user-plus" class="w-5 h-5"></i> Nova Criança
             </button>
         </div>
     </div>
 
-    <!-- Tela Cadastro -->
     <div id="view-form" class="hidden flex-1 flex flex-col w-full max-w-md bg-white shadow-xl overflow-hidden view-transition z-20 relative">
         <div class="flex-1 overflow-y-auto p-6">
             <button onclick="app.showHome()" class="text-slate-500 mb-6 flex items-center gap-1 font-bold">
@@ -194,27 +186,26 @@
             <form id="addForm" class="space-y-5">
                 <div class="space-y-1.5">
                     <label class="text-sm font-bold text-slate-700">Nome ou Apelido</label>
-                    <input type="text" id="inputName" required placeholder="Ex: Joãozinho" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-brand font-medium">
+                    <input type="text" id="inputName" required placeholder="Ex: Joãozinho" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#78C7C7] font-medium">
                 </div>
                 <div class="space-y-1.5">
                     <label class="text-sm font-bold text-slate-700">Data de Nascimento Oficial</label>
-                    <input type="date" id="inputDate" required class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-brand font-medium text-slate-700">
+                    <input type="date" id="inputDate" required class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#78C7C7] font-medium text-slate-700">
                 </div>
-                <button type="submit" class="w-full bg-brand text-white font-bold py-4 rounded-xl shadow-md mt-6 active:scale-95 transition-transform">
+                <button type="submit" class="w-full bg-[#78C7C7] text-white font-bold py-4 rounded-xl shadow-md mt-6 active:scale-95 transition-transform">
                     Salvar e Abrir Painel
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Tela Roteiro Busca Ativa -->
     <div id="view-busca-ativa" class="hidden h-[100dvh] flex flex-col w-full max-w-md bg-slate-50 shadow-xl overflow-hidden view-transition z-30 relative">
         <div class="bg-red-600 px-5 pt-6 pb-6 shrink-0 no-export z-20 relative">
             <div class="flex justify-between items-center mb-2">
                 <button onclick="app.showHome()" class="text-white/90 hover:text-white rounded flex items-center gap-1 font-semibold text-sm">
                     <i data-lucide="arrow-left" class="w-5 h-5"></i> Voltar
                 </button>
-                <button onclick="app.exportarBuscaAtiva()" class="flex items-center gap-1 text-xs font-bold text-red-900 bg-red-50 px-3 py-1.5 rounded-full shadow-sm hover:bg-white">
+                <button onclick="app.exportarBuscaAtiva()" class="flex items-center gap-1 text-xs font-bold text-red-900 bg-red-50 px-3 py-1.5 rounded-full shadow-sm hover:bg-white transition-colors">
                     <i data-lucide="printer" class="w-3.5 h-3.5"></i> PDF Roteiro
                 </button>
             </div>
@@ -227,7 +218,6 @@
         <div class="flex-1 overflow-y-auto w-full relative z-10 p-5 bg-white">
             <div id="export-roteiro-target" class="print-ficha">
                 
-                <!-- Cabeçalho Oficial ACS para impressão -->
                 <div class="border-2 border-slate-800 print-border p-3 mb-5 rounded bg-slate-50 print:bg-white hidden print:block">
                     <h2 class="text-center text-sm font-black uppercase text-slate-900 mb-2 border-b border-slate-300 pb-2">Roteiro de Busca Ativa Vacinal</h2>
                     <div class="grid grid-cols-2 gap-2 text-[10px] uppercase font-bold text-slate-700">
@@ -237,9 +227,10 @@
                     </div>
                 </div>
 
+                <div id="summary-busca-ativa" class="mb-4 no-export"></div>
+
                 <div id="list-busca-ativa" class="space-y-4">
-                    <!-- Preenchido via JS -->
-                </div>
+                    </div>
                 
                 <div class="mt-8 pt-4 border-t border-slate-300 text-center text-[10px] text-slate-500 font-medium">
                     Gerado pelo Radar Vacinal do ACS em <span id="roteiro-data"></span>
@@ -248,10 +239,9 @@
         </div>
     </div>
 
-    <!-- Tela Detalhe Criança -->
     <div id="view-detail" class="hidden h-[100dvh] flex flex-col w-full max-w-md bg-slate-50 shadow-xl overflow-hidden view-transition z-30 relative">
         
-        <div class="bg-gradient-to-br from-teal-500 to-sky-700 px-5 pt-6 pb-12 shrink-0 no-export z-20 relative">
+        <div class="bg-[#78C7C7] px-5 pt-6 pb-12 shrink-0 no-export z-20 relative">
             <div class="flex justify-between items-start mb-4">
                 <button onclick="app.showHome()" class="text-white/90 hover:text-white rounded flex items-center gap-1 font-semibold text-sm">
                     <i data-lucide="arrow-left" class="w-5 h-5"></i> Voltar
@@ -260,7 +250,7 @@
                     <button onclick="document.getElementById('modal-dict').classList.remove('hidden')" class="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors" title="Informações de Vacinas">
                         <i data-lucide="info" class="w-4 h-4"></i>
                     </button>
-                    <button onclick="app.exportarFicha()" class="flex items-center gap-1 text-xs font-bold text-teal-900 bg-teal-50 px-3 py-1.5 rounded-full shadow-sm hover:bg-white">
+                    <button onclick="app.exportarFicha()" class="flex items-center gap-1 text-xs font-bold text-teal-900 bg-white/80 px-3 py-1.5 rounded-full shadow-sm hover:bg-white transition-colors">
                         <i data-lucide="printer" class="w-3.5 h-3.5"></i> PDF
                     </button>
                 </div>
@@ -268,25 +258,25 @@
 
             <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30" id="detail-avatar-border">
-                    <i data-lucide="user" class="w-6 h-6 text-white" id="detail-avatar-icon"></i>
+                    <i data-lucide="user" class="w-6 h-6 text-white drop-shadow-sm" id="detail-avatar-icon"></i>
                 </div>
-                <div class="flex-1 text-white">
+                <div class="flex-1 text-white drop-shadow-sm">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <h2 class="text-xl font-bold leading-tight" id="detail-name">Nome</h2>
-                            <button onclick="app.editChildName()" class="text-white/60 hover:text-white transition-colors p-1" title="Editar Nome">
+                            <button onclick="app.editChildName()" class="text-white/80 hover:text-white transition-colors p-1" title="Editar Nome">
                                 <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
                             </button>
                         </div>
                         <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider" id="detail-status-badge">OK</div>
                     </div>
-                    <p class="text-xs font-medium text-teal-50 mt-0.5"><span id="detail-age">Idade</span> • Nasc: <span id="detail-date">--/--</span></p>
+                    <p class="text-xs font-medium text-white/90 mt-0.5"><span id="detail-age">Idade</span> • Nasc: <span id="detail-date">--/--</span></p>
                     
                     <div class="mt-2.5 flex items-center gap-2">
-                        <div class="flex-1 bg-black/20 rounded-full h-1 overflow-hidden">
-                            <div id="detail-progress-bar" class="bg-white h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        <div class="flex-1 bg-black/10 rounded-full h-1.5 overflow-hidden">
+                            <div id="detail-progress-bar" class="bg-white h-full rounded-full transition-all duration-500 shadow-sm" style="width: 0%"></div>
                         </div>
-                        <span class="text-[9px] font-bold text-teal-100 whitespace-nowrap" id="detail-progress-text">0/0</span>
+                        <span class="text-[9px] font-bold text-white whitespace-nowrap" id="detail-progress-text">0/0</span>
                     </div>
                 </div>
             </div>
@@ -294,7 +284,7 @@
 
         <div class="px-5 -mt-5 shrink-0 relative z-30 no-export">
             <div class="bg-white rounded-full shadow-sm border border-slate-100 p-1 flex gap-1 text-[12px] font-bold text-slate-500">
-                <button onclick="app.setTab('proximas')" id="tab-btn-proximas" class="flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1.5 text-teal-700 bg-teal-50">
+                <button onclick="app.setTab('proximas')" id="tab-btn-proximas" class="flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1.5 text-teal-700 bg-[#78C7C7]/10">
                     Próximas
                 </button>
                 <button onclick="app.setTab('cronograma')" id="tab-btn-cronograma" class="flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1.5 hover:bg-slate-50">
@@ -337,10 +327,8 @@
                 <div class="relative border-l-2 border-slate-200 ml-4 space-y-6" id="timeline-container"></div>
             </div>
 
-            <!-- Ficha Oficial ACS -->
             <div id="tab-ficha" class="hidden print-ficha">
                 <div id="export-target" class="bg-white p-5 border border-slate-200 print-border shadow-sm min-h-[500px]">
-                    <!-- Cabeçalho Oficial ACS -->
                     <div class="border-b-2 border-slate-800 print-border pb-3 mb-4 flex justify-between items-start">
                         <div>
                             <h2 class="text-sm font-black uppercase text-slate-900 leading-tight">Ficha de Acompanhamento Infantil<br>para Visita Domiciliar</h2>
@@ -354,7 +342,6 @@
                         <div class="col-span-2">Equipe: <span id="ficha-acs-eq" class="font-normal border-b border-slate-400 inline-block min-w-[150px] h-3"></span></div>
                     </div>
 
-                    <!-- Dados do Paciente -->
                     <div class="bg-slate-50 border border-slate-300 print-border p-3 mb-4">
                         <div class="grid grid-cols-2 gap-y-2 text-xs">
                             <div><span class="font-bold text-slate-500 uppercase text-[9px]">Paciente</span><br><span class="font-bold" id="ficha-nome"></span></div>
@@ -374,7 +361,6 @@
                         <div id="ficha-list-proximas" class="text-xs space-y-2"></div>
                     </div>
 
-                    <!-- Espaço para anotações em campo -->
                     <div class="mt-6 border border-slate-300 print-border h-24 p-2 relative">
                         <span class="absolute top-1 left-2 text-[9px] uppercase font-bold text-slate-400">Anotações da Visita:</span>
                         <div class="border-b border-slate-200 print-border w-full absolute bottom-4 left-0"></div>
@@ -392,6 +378,10 @@
     </div>
 
     <script>
+        // ======= CONSTANTE DO LINK DO KIT PAGO =======
+        const KIT_ACS_URL = "https://seulink.aqui"; 
+        // =============================================
+
         lucide.createIcons();
 
         const vaccineDatabase = [
@@ -469,11 +459,11 @@
 
             promptUnlock() {
                 const iconBtn = document.getElementById('btn-lock-profile');
-                iconBtn.classList.add('animate-pulse', 'text-brand');
+                iconBtn.classList.add('animate-pulse', 'text-[#78C7C7]');
                 iconBtn.classList.remove('text-slate-400');
                 setTimeout(() => {
                     if(this.state.profileLocked) {
-                        iconBtn.classList.remove('animate-pulse', 'text-brand');
+                        iconBtn.classList.remove('animate-pulse', 'text-[#78C7C7]');
                         iconBtn.classList.add('text-slate-400');
                     }
                 }, 1000);
@@ -500,10 +490,10 @@
                 const iconBtn = document.getElementById('btn-lock-profile');
                 if (isLocked) {
                     iconBtn.innerHTML = '<i data-lucide="lock" class="w-3.5 h-3.5"></i>';
-                    iconBtn.classList.replace('text-brand', 'text-slate-400');
+                    iconBtn.classList.replace('text-[#78C7C7]', 'text-slate-400');
                 } else {
                     iconBtn.innerHTML = '<i data-lucide="unlock" class="w-3.5 h-3.5"></i>';
-                    iconBtn.classList.replace('text-slate-400', 'text-brand');
+                    iconBtn.classList.replace('text-slate-400', 'text-[#78C7C7]');
                 }
                 lucide.createIcons();
             },
@@ -530,11 +520,9 @@
                 const child = this.state.children.find(c => c.id === this.state.activeChildId);
                 if (!child) return;
                 
-                // Preenche o modal novo com os dados existentes
                 document.getElementById('edit-input-name').value = child.name;
                 document.getElementById('edit-input-date').value = child.birthDate;
                 
-                // Exibe o modal
                 document.getElementById('modal-edit-name').classList.remove('hidden');
             },
 
@@ -599,7 +587,7 @@
             setTab(tabName) {
                 ['proximas', 'cronograma', 'ficha'].forEach(t => {
                     const btn = document.getElementById(`tab-btn-${t}`);
-                    if(t === tabName) btn.className = "flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1 text-brand bg-teal-50 shadow-sm";
+                    if(t === tabName) btn.className = "flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1 text-[#78C7C7] bg-[#78C7C7]/10 shadow-sm";
                     else btn.className = "flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1 hover:bg-slate-100 bg-transparent";
                     document.getElementById(`tab-${t}`).classList.add('hidden');
                 });
@@ -654,19 +642,19 @@
                     let borderCol = 'border-slate-100', iconBg = 'bg-slate-100', iconTxt = 'text-slate-500', badge = '';
                     if (c.status === 'danger') { borderCol='border-red-200'; iconBg='bg-red-50'; iconTxt='text-red-500'; badge=`<span class="bg-red-50 text-red-600 border border-red-200 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">${c.delayedCount} Atraso(s)</span>`; }
                     else if (c.status === 'alert') { borderCol='border-amber-200'; iconBg='bg-amber-50'; iconTxt='text-amber-500'; badge=`<span class="bg-amber-50 text-amber-600 border border-amber-200 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">Atenção</span>`; }
-                    else { iconBg='bg-teal-50'; iconTxt='text-teal-600'; badge=`<span class="text-teal-500 text-[10px] font-bold uppercase"><i data-lucide="check" class="w-3 h-3 inline"></i> Em dia</span>`; }
+                    else { iconBg='bg-[#78C7C7]/10'; iconTxt='text-[#78C7C7]'; badge=`<span class="text-[#78C7C7] text-[10px] font-bold uppercase"><i data-lucide="check" class="w-3 h-3 inline"></i> Em dia</span>`; }
 
                     return `
-                    <div onclick="app.openChild('${c.id}')" class="bg-white rounded-2xl p-4 shadow-sm border ${borderCol} cursor-pointer active:scale-[0.98] transition-all flex justify-between items-center group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full ${iconBg} ${iconTxt} flex items-center justify-center font-black text-lg">${c.name.charAt(0).toUpperCase()}</div>
+                    <div class="bg-white rounded-2xl p-1 shadow-sm border ${borderCol} transition-all flex justify-between items-center group">
+                        <div onclick="app.openChild('${c.id}')" class="flex items-center gap-3 flex-1 cursor-pointer p-3 active:scale-[0.98]">
+                            <div class="w-12 h-12 rounded-full ${iconBg} ${iconTxt} flex items-center justify-center font-black text-lg shrink-0">${c.name.charAt(0).toUpperCase()}</div>
                             <div>
                                 <h3 class="font-bold text-slate-800 text-[15px] flex items-center gap-2">${c.name} ${badge}</h3>
                                 <p class="text-xs text-slate-500 font-medium">${c.ageText}</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-1">
-                            <button onclick="app.deleteChild('${c.id}', event)" class="p-2 text-slate-300 hover:text-red-500 rounded-lg"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        <div class="px-2 border-l border-slate-50 flex items-center justify-center h-full">
+                            <button onclick="app.deleteChild('${c.id}', event)" class="p-3 text-slate-300 hover:text-red-500 hover:bg-red-50 transition-colors rounded-xl"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
                         </div>
                     </div>`;
                 }).join('');
@@ -679,10 +667,20 @@
                     return { ...child, doses: res.doses.filter(d => d.status === 'delayed'), ageText: this.getAgeText(child.birthDate) };
                 }).filter(c => c.doses.length > 0);
 
-                dataList.sort((a, b) => b.doses.length - a.doses.length); // Ordena por quantidade de atrasos
+                // Nova Regra de Ordenação: 1º qtde de atraso, 2º idade (criança mais nova), 3º alfabética
+                dataList.sort((a, b) => {
+                    if (b.doses.length !== a.doses.length) return b.doses.length - a.doses.length;
+                    const dateA = new Date(a.birthDate).getTime();
+                    const dateB = new Date(b.birthDate).getTime();
+                    if (dateA !== dateB) return dateB - dateA; // data maior = mais jovem (vem primeiro)
+                    return a.name.localeCompare(b.name);
+                });
 
                 const listEl = document.getElementById('list-busca-ativa');
+                const summaryEl = document.getElementById('summary-busca-ativa');
+
                 if (!dataList.length) { 
+                    summaryEl.innerHTML = '';
                     listEl.innerHTML = `
                         <div class="text-center py-10 bg-emerald-50 rounded-xl border border-emerald-100">
                             <div class="w-12 h-12 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3"><i data-lucide="check-circle" class="w-6 h-6"></i></div>
@@ -691,6 +689,12 @@
                     lucide.createIcons();
                     return; 
                 }
+
+                // Resumo no topo da busca ativa
+                summaryEl.innerHTML = `
+                    <p class="text-sm font-bold text-red-700 bg-red-50 p-3 rounded-lg border border-red-200 mb-2 shadow-sm text-center flex items-center justify-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4"></i> ${dataList.length} criança(s) com pendência vacinal
+                    </p>`;
 
                 document.getElementById('print-acs-nome').classList.remove('hidden'); // garante exibir se houver
 
@@ -713,9 +717,19 @@
                                 </div>
                             `).join('')}
                         </div>
-                        <div class="mt-3 border-t border-slate-100 pt-2 flex items-center gap-2">
-                            <span class="text-[9px] font-bold text-slate-400 uppercase">Visita realizada em:</span>
-                            <div class="border-b border-slate-400 flex-1 print-border"></div>
+                        
+                        <div class="mt-4 pt-3 border-t border-slate-200 print-border">
+                            <p class="text-[9px] font-bold text-slate-700 uppercase mb-2">Desfecho da Visita:</p>
+                            <div class="flex flex-wrap gap-x-4 gap-y-2 text-[10px] text-slate-600 font-medium mb-3">
+                                <label class="flex items-center gap-1"><div class="w-3 h-3 border border-slate-400 rounded-sm print-border"></div> orientado</label>
+                                <label class="flex items-center gap-1"><div class="w-3 h-3 border border-slate-400 rounded-sm print-border"></div> encaminhado</label>
+                                <label class="flex items-center gap-1"><div class="w-3 h-3 border border-slate-400 rounded-sm print-border"></div> não encontrado</label>
+                                <label class="flex items-center gap-1"><div class="w-3 h-3 border border-slate-400 rounded-sm print-border"></div> recusou</label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] font-bold text-slate-700 uppercase">Observação:</span>
+                                <div class="border-b border-slate-400 flex-1 print-border h-3"></div>
+                            </div>
                         </div>
                     </div>
                 `).join('');
@@ -736,8 +750,8 @@
                 document.getElementById('detail-progress-text').textContent = `${child.applied.length}/${TOTAL_DOSES}`;
 
                 const badgeEl = document.getElementById('detail-status-badge');
-                if(res.generalStatus === 'danger') { badgeEl.className = "bg-red-500/20 text-red-100 px-2 py-0.5 rounded text-[10px] font-bold uppercase border border-red-500/30"; badgeEl.innerHTML = "Atraso"; }
-                else if(res.generalStatus === 'alert') { badgeEl.className = "bg-amber-500/20 text-amber-100 px-2 py-0.5 rounded text-[10px] font-bold uppercase border border-amber-500/30"; badgeEl.innerHTML = "Atenção"; }
+                if(res.generalStatus === 'danger') { badgeEl.className = "bg-red-500 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase shadow-sm border border-red-600"; badgeEl.innerHTML = "Atraso"; }
+                else if(res.generalStatus === 'alert') { badgeEl.className = "bg-amber-500 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase shadow-sm border border-amber-600"; badgeEl.innerHTML = "Atenção"; }
                 else { badgeEl.className = "bg-white/20 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase border border-white/30"; badgeEl.innerHTML = "Em Dia"; }
 
                 const atrasadas = cal.filter(v => v.status === 'delayed');
@@ -771,7 +785,7 @@
                 let tlHTML = '';
                 vaccineDatabase.forEach(group => {
                     const doses = cal.filter(v => v.idGroup === group.idGroup);
-                    let dotColor = doses.every(v => v.status === 'applied') ? 'bg-emerald-400' : (doses.some(v => v.status === 'delayed') ? 'bg-red-500' : 'bg-brand');
+                    let dotColor = doses.every(v => v.status === 'applied') ? 'bg-emerald-400' : (doses.some(v => v.status === 'delayed') ? 'bg-red-500' : 'bg-[#78C7C7]');
 
                     tlHTML += `
                     <div class="relative pl-5 pb-4">
