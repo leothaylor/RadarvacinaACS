@@ -49,22 +49,23 @@
             transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
         }
         .neon-ring {
-            width: 130px;
-            height: 130px;
+            width: 84px; /* Ajuste milimétrico para abraçar a logo de 80px */
+            height: 84px; /* Ajuste milimétrico para abraçar a logo de 80px */
             border-radius: 50%;
-            border: 3px solid transparent;
+            border: 2px solid transparent;
             border-top-color: #ffffff;
             border-right-color: #ffffff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.5);
             animation: spinNeon 1s linear infinite;
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            box-sizing: border-box;
         }
         .neon-ring::before {
             content: '';
             position: absolute;
-            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
             border-radius: 50%;
-            border: 3px solid transparent;
+            border: 2px solid transparent;
             border-bottom-color: rgba(255, 255, 255, 0.5);
             animation: spinNeonReverse 2s linear infinite;
         }
@@ -79,7 +80,7 @@
         .logo-reveal {
             opacity: 0;
             transform: scale(0.3) translateY(10px);
-            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito "Pop" (Bounce) */
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
         }
         .logo-reveal.active {
             opacity: 1;
