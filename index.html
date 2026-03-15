@@ -50,7 +50,8 @@
         }
         .neon-ring {
             position: absolute;
-            inset: -4px; /* Cria margem exata em volta da imagem pai */
+            top: 0; left: 0;
+            width: 100%; height: 100%; /* Ajuste cirúrgico: 100% do pai */
             border-radius: 50%;
             border: 2px solid transparent;
             border-top-color: #ffffff;
@@ -63,7 +64,7 @@
         .neon-ring::before {
             content: '';
             position: absolute;
-            inset: -2px;
+            top: -2px; left: -2px; right: -2px; bottom: -2px; /* Sobrepõe exatamente a borda original */
             border-radius: 50%;
             border: 2px solid transparent;
             border-bottom-color: rgba(255, 255, 255, 0.5);
@@ -95,7 +96,7 @@
 <body class="text-slate-800 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden">
 
     <div id="preloader" class="fixed inset-0 z-[100] bg-[#78C7C7] flex items-center justify-center">
-        <div class="relative w-24 h-24 flex items-center justify-center">
+        <div class="relative w-24 h-24 flex items-center justify-center rounded-full">
             <div id="neon-spinner" class="neon-ring"></div>
             <img 
                 id="preloader-logo"
