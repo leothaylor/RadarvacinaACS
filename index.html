@@ -49,8 +49,8 @@
             transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
         }
         .neon-ring {
-            width: 84px; /* Ajuste milimétrico para abraçar a logo de 80px */
-            height: 84px; /* Ajuste milimétrico para abraçar a logo de 80px */
+            position: absolute;
+            inset: -4px; /* Cria margem exata em volta da imagem pai */
             border-radius: 50%;
             border: 2px solid transparent;
             border-top-color: #ffffff;
@@ -63,7 +63,7 @@
         .neon-ring::before {
             content: '';
             position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            inset: -2px;
             border-radius: 50%;
             border: 2px solid transparent;
             border-bottom-color: rgba(255, 255, 255, 0.5);
@@ -95,14 +95,14 @@
 <body class="text-slate-800 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden">
 
     <div id="preloader" class="fixed inset-0 z-[100] bg-[#78C7C7] flex items-center justify-center">
-        <div class="relative flex items-center justify-center">
-            <div id="neon-spinner" class="neon-ring absolute"></div>
+        <div class="relative w-24 h-24 flex items-center justify-center">
+            <div id="neon-spinner" class="neon-ring"></div>
             <img 
                 id="preloader-logo"
                 src="./logo-radar-acs.png" 
                 alt="Logo Radar" 
-                class="w-20 h-20 object-contain rounded-full relative z-10 logo-reveal"
-                onerror="this.onerror=null; this.outerHTML='<div class=\'w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center logo-reveal\' id=\'preloader-logo\'><i data-lucide=\'radar\' class=\'w-8 h-8 text-white\'></i></div>'; lucide.createIcons();"
+                class="w-full h-full object-contain rounded-full relative z-10 logo-reveal"
+                onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center logo-reveal\' id=\'preloader-logo\'><i data-lucide=\'radar\' class=\'w-8 h-8 text-white\'></i></div>'; lucide.createIcons();"
             >
         </div>
     </div>
@@ -148,7 +148,7 @@
     </div>
 
     <div id="view-home" class="flex-1 flex flex-col w-full max-w-md bg-slate-50 shadow-2xl overflow-hidden relative">
-        <div class="flex-1 overflow-y-auto pb-24 relative z-0">
+        <div class="flex-1 overflow-y-auto pb-32 relative z-0">
             
             <div class="bg-[#78C7C7] px-6 pt-10 pb-16 shrink-0 relative">
                 <div class="flex items-center justify-between mb-4">
@@ -235,8 +235,10 @@
 
                 <div id="children-list" class="space-y-3"></div>
             </div>
-            
-            <button onclick="app.showAddForm()" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[200px] bg-[#78C7C7] hover:bg-teal-500 text-white font-bold py-3.5 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center gap-2 z-50">
+        </div>
+
+        <div class="absolute bottom-0 left-0 w-full h-28 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent pointer-events-none flex items-end justify-center pb-6 z-50">
+            <button onclick="app.showAddForm()" class="pointer-events-auto w-[220px] bg-[#78C7C7] hover:bg-teal-500 text-white font-bold py-3.5 rounded-full shadow-lg shadow-[#78C7C7]/40 transition-transform active:scale-95 flex items-center justify-center gap-2">
                 <i data-lucide="user-plus" class="w-5 h-5"></i> Nova Criança
             </button>
         </div>
