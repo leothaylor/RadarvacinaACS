@@ -51,7 +51,7 @@
         .neon-ring {
             position: absolute;
             top: 0; left: 0;
-            width: 100%; height: 100%; /* Ajuste cirúrgico: 100% do pai */
+            width: 100%; height: 100%; 
             border-radius: 50%;
             border: 2px solid transparent;
             border-top-color: #ffffff;
@@ -64,7 +64,7 @@
         .neon-ring::before {
             content: '';
             position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px; /* Sobrepõe exatamente a borda original */
+            top: -2px; left: -2px; right: -2px; bottom: -2px; 
             border-radius: 50%;
             border: 2px solid transparent;
             border-bottom-color: rgba(255, 255, 255, 0.5);
@@ -112,7 +112,7 @@
         <div class="bg-white w-full max-w-md mx-auto h-[75vh] rounded-t-3xl shadow-2xl flex flex-col slide-up">
             <div class="flex justify-between items-center px-6 py-5 border-b border-slate-100">
                 <div>
-                    <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2"><i data-lucide="book-open-check" class="w-5 h-5 text-brand"></i> Guia Rápido</h3>
+                    <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2"><i data-lucide="book-open-check" class="w-5 h-5 text-[#78C7C7]"></i> Guia Rápido</h3>
                     <p class="text-xs text-slate-500">Proteção oferecida por cada vacina</p>
                 </div>
                 <button onclick="document.getElementById('modal-dict').classList.add('hidden')" class="p-2 bg-slate-100 text-slate-500 hover:bg-slate-200 rounded-full">
@@ -133,11 +133,11 @@
             <div class="space-y-3">
                 <div>
                     <label class="text-xs font-bold text-slate-700 block mb-1">Nome ou Apelido</label>
-                    <input type="text" id="edit-input-name" class="w-full bg-slate-50 border-2 border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-brand font-medium text-slate-800">
+                    <input type="text" id="edit-input-name" class="w-full bg-slate-50 border-2 border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-[#78C7C7] font-medium text-slate-800">
                 </div>
                 <div>
-                    <label class="text-xs font-bold text-slate-700 block mb-1">Data de Nascimento</label>
-                    <input type="date" id="edit-input-date" class="w-full bg-slate-50 border-2 border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-brand font-medium text-slate-700">
+                    <label class="text-xs font-bold text-slate-700 block mb-1">Data de nascimento</label>
+                    <input type="date" id="edit-input-date" class="w-full bg-slate-50 border-2 border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-[#78C7C7] font-medium text-slate-700">
                 </div>
             </div>
 
@@ -154,24 +154,28 @@
             <div class="bg-[#78C7C7] px-6 pt-10 pb-16 shrink-0 relative">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-4">
-                        <div class="w-20 h-20 flex items-center justify-center shrink-0 relative">
+                        <div class="w-16 h-16 flex items-center justify-center shrink-0 relative bg-white/10 rounded-2xl p-2 border border-white/20">
                             <img 
                                 src="./logo-radar-acs.png" 
                                 alt="Logo Radar Vacinal do ACS"
                                 class="w-full h-full object-contain"
-                                onerror="this.onerror=null; this.outerHTML='<div class=\'w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center\'><i data-lucide=\'radar\' class=\'w-6 h-6 text-white\'></i></div>'; lucide.createIcons();"
+                                onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full flex items-center justify-center\'><i data-lucide=\'radar\' class=\'w-8 h-8 text-white\'></i></div>'; lucide.createIcons();"
                             >
                         </div>
                         <div>
-                            <h1 class="text-[28px] font-bold text-white leading-tight drop-shadow-sm">Radar Vacinal do ACS</h1>
-                            <p class="text-white/90 text-[10px] font-medium tracking-wide">FERRAMENTA GRATUITA PARA TERRITÓRIO</p>
+                            <h1 class="text-2xl font-black text-white leading-tight drop-shadow-sm">Radar Vacinal</h1>
+                            <p class="text-white/90 text-[10px] font-bold tracking-wider uppercase mb-1">Apoio de Campo ACS</p>
                         </div>
                     </div>
                 </div>
+                
+                <p class="text-white text-sm font-medium leading-relaxed mb-5 opacity-95">
+                    Organize por apelido as crianças da sua microárea e veja rapidamente quem está em atraso, atenção ou em dia.
+                </p>
 
-                <div class="grid grid-cols-4 gap-2 text-center mb-5 mt-4">
+                <div class="grid grid-cols-4 gap-2 text-center mb-5">
                     <div class="bg-white/20 backdrop-blur-sm rounded-xl p-2 border border-white/30 shadow-sm">
-                        <p class="text-[9px] text-white/90 font-bold uppercase">Cadastros</p>
+                        <p class="text-[9px] text-white/90 font-bold uppercase">Total</p>
                         <p class="text-lg font-black text-white drop-shadow-sm" id="metric-total">0</p>
                     </div>
                     <div class="bg-red-500/80 backdrop-blur-sm rounded-xl p-2 border border-red-500 shadow-sm">
@@ -188,21 +192,26 @@
                     </div>
                 </div>
 
-                <div class="relative shadow-sm">
+                <div class="relative shadow-sm mb-2">
                     <i data-lucide="search" class="absolute left-4 top-3 w-4 h-4 text-slate-500"></i>
                     <input type="text" id="searchInput" onkeyup="app.filterHome()" placeholder="Buscar por nome ou apelido..." 
                         class="w-full bg-white border border-transparent rounded-2xl pl-10 pr-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-white/50 transition-all">
                 </div>
             </div>
 
-            <div class="px-5 -mt-6 relative z-10 flex gap-2 overflow-x-auto hide-scrollbar mb-4">
-                <button onclick="app.setFilter('all')" id="flt-all" class="flt-btn px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-slate-800 text-white shrink-0">Todas</button>
-                <button onclick="app.showBuscaAtiva()" class="px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-red-100 text-red-700 border border-red-200 flex items-center gap-1.5 shrink-0 active:scale-95 transition-transform">
-                    <i data-lucide="map" class="w-3.5 h-3.5"></i> Busca Ativa
-                </button>
+            <div class="px-5 -mt-5 relative z-10 flex gap-2 overflow-x-auto hide-scrollbar mb-4">
+                <button onclick="app.setFilter('all')" id="flt-all" class="flt-btn px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-slate-800 text-white shrink-0 transition-colors">Todas</button>
+                <button onclick="app.setFilter('danger')" id="flt-danger" class="flt-btn px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-white text-slate-600 border border-slate-200 shrink-0 transition-colors">Em atraso</button>
+                <button onclick="app.setFilter('alert')" id="flt-alert" class="flt-btn px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-white text-slate-600 border border-slate-200 shrink-0 transition-colors">Atenção</button>
+                <button onclick="app.setFilter('ok')" id="flt-ok" class="flt-btn px-4 py-2 rounded-full text-[11px] font-bold shadow-sm bg-white text-slate-600 border border-slate-200 shrink-0 transition-colors">Em dia</button>
             </div>
 
             <div class="px-5 pb-5">
+                
+                <button onclick="app.showBuscaAtiva()" class="w-full mb-4 px-4 py-3 rounded-xl font-bold shadow-sm bg-red-50 text-red-700 border border-red-200 flex items-center justify-center gap-2 active:scale-95 transition-transform hover:bg-red-100">
+                    <i data-lucide="map" class="w-4 h-4"></i> Gerar roteiro de Busca Ativa
+                </button>
+
                 <div class="bg-white border border-slate-200 rounded-xl p-3 mb-4 shadow-sm relative transition-all" id="profile-container">
                     <div class="flex justify-between items-center mb-2">
                         <p class="text-[10px] font-bold text-[#78C7C7] uppercase flex items-center gap-1"><i data-lucide="user-circle" class="w-3 h-3"></i> Seus Dados (Para Impressão)</p>
@@ -212,7 +221,6 @@
                     </div>
                     <div class="flex flex-col gap-2 relative">
                         <div id="lock-overlay" class="absolute inset-0 z-10 hidden cursor-pointer" onclick="app.promptUnlock()"></div>
-                        
                         <input type="text" id="profAcs" placeholder="Nome do ACS" onblur="app.saveProfileInline()" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-[#78C7C7] text-xs font-medium text-slate-700 transition-colors">
                         <div class="flex gap-2">
                             <input type="text" id="profEquipe" placeholder="Equipe (e-SUS)" onblur="app.saveProfileInline()" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-[#78C7C7] text-xs font-medium text-slate-700 transition-colors">
@@ -221,14 +229,27 @@
                     </div>
                 </div>
 
-                <div class="bg-slate-100 border border-slate-300 rounded-xl p-3 mb-4 flex items-center justify-between cursor-pointer hover:bg-slate-200 transition-colors" onclick="window.open(KIT_ACS_URL, '_blank')">
+                <div class="bg-slate-100/80 border border-slate-200 rounded-xl p-4 mb-4 flex gap-3 items-start shadow-sm">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-slate-500 shrink-0 mt-0.5"></i>
+                    <div class="text-[11px] text-slate-600 space-y-2">
+                        <p class="font-bold text-slate-700 text-xs">Privacidade e Armazenamento</p>
+                        <ul class="list-disc pl-3 space-y-1">
+                            <li>Os dados ficam salvos <strong>apenas neste aparelho/navegador</strong>.</li>
+                            <li>Para preservar a privacidade, use preferencialmente <strong>apelidos</strong> ou iniciais.</li>
+                            <li>Se limpar o cache ou dados do navegador, <strong>as informações sumirão</strong>.</li>
+                            <li>Ferramenta feita para organizar e gerar impressão para visita domiciliar.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-3 mb-5 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors shadow-sm" onclick="window.open(KIT_ACS_URL, '_blank')">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-[#78C7C7]/20 rounded-lg flex items-center justify-center shrink-0 border border-[#78C7C7]/30">
+                        <div class="w-10 h-10 bg-[#78C7C7]/10 rounded-lg flex items-center justify-center shrink-0 border border-[#78C7C7]/20">
                             <i data-lucide="briefcase" class="w-5 h-5 text-[#78C7C7]"></i>
                         </div>
                         <div>
                             <h4 class="text-xs font-bold text-slate-800">Leve isso pra prancheta</h4>
-                            <p class="text-[10px] text-slate-500 font-medium">Conheça o Kit Operacional ACS</p>
+                            <p class="text-[10px] text-slate-500 font-medium mt-0.5">Conheça o material de apoio para visita e registro</p>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
@@ -239,8 +260,8 @@
         </div>
 
         <div class="absolute bottom-0 left-0 w-full h-28 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent pointer-events-none flex items-end justify-center pb-6 z-50">
-            <button onclick="app.showAddForm()" class="pointer-events-auto w-[220px] bg-[#78C7C7] hover:bg-teal-500 text-white font-bold py-3.5 rounded-full shadow-lg shadow-[#78C7C7]/40 transition-transform active:scale-95 flex items-center justify-center gap-2">
-                <i data-lucide="user-plus" class="w-5 h-5"></i> Nova Criança
+            <button onclick="app.showAddForm()" class="pointer-events-auto w-[240px] bg-[#78C7C7] hover:bg-teal-500 text-white font-bold py-3.5 rounded-full shadow-lg shadow-[#78C7C7]/40 transition-transform active:scale-95 flex items-center justify-center gap-2">
+                <i data-lucide="user-plus" class="w-5 h-5"></i> Adicionar criança
             </button>
         </div>
     </div>
@@ -256,13 +277,21 @@
             <form id="addForm" class="space-y-5">
                 <div class="space-y-1.5">
                     <label class="text-sm font-bold text-slate-700">Nome ou Apelido</label>
-                    <input type="text" id="inputName" required placeholder="Ex: Joãozinho" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#78C7C7] font-medium">
+                    <input type="text" id="inputName" required placeholder="Ex: Joãozinho" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#78C7C7] font-medium text-slate-800">
                 </div>
                 <div class="space-y-1.5">
-                    <label class="text-sm font-bold text-slate-700">Data de Nascimento Oficial</label>
+                    <label class="text-sm font-bold text-slate-700">Data de nascimento</label>
                     <input type="date" id="inputDate" required class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#78C7C7] font-medium text-slate-700">
                 </div>
-                <button type="submit" class="w-full bg-[#78C7C7] text-white font-bold py-4 rounded-xl shadow-md mt-6 active:scale-95 transition-transform">
+
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 mt-4 flex gap-2 items-start">
+                    <i data-lucide="info" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i>
+                    <p class="text-[11px] text-amber-800 leading-snug">
+                        <strong>Atenção:</strong> Ferramenta de apoio para organização. Sempre confirme o histórico com a caderneta física e o protocolo local vigente.
+                    </p>
+                </div>
+
+                <button type="submit" class="w-full bg-[#78C7C7] text-white font-bold py-4 rounded-xl shadow-md mt-6 active:scale-95 transition-transform hover:bg-teal-500">
                     Salvar e Abrir Painel
                 </button>
             </form>
@@ -299,10 +328,10 @@
 
                 <div id="summary-busca-ativa" class="mb-4 no-export"></div>
 
-                <div id="list-busca-ativa" class="space-y-4">
-                    </div>
+                <div id="list-busca-ativa" class="space-y-4"></div>
                 
                 <div class="mt-8 pt-4 border-t border-slate-300 text-center text-[10px] text-slate-500 font-medium">
+                    Ferramenta de apoio. Sempre confirme com caderneta e protocolo oficial.<br>
                     Gerado pelo Radar Vacinal do ACS em <span id="roteiro-data"></span>
                 </div>
             </div>
@@ -361,7 +390,7 @@
                     Calendário
                 </button>
                 <button onclick="app.setTab('ficha')" id="tab-btn-ficha" class="flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1.5 hover:bg-slate-50">
-                    Visita Dom.
+                    Impressão
                 </button>
             </div>
         </div>
@@ -439,7 +468,8 @@
                     </div>
 
                     <div class="border-t border-slate-300 print-border pt-2 mt-4 text-center text-[9px] text-slate-500">
-                        Gerado em <span id="ficha-hoje"></span>. Valide sempre com a Caderneta de Saúde da Criança Oficial.
+                        Apoio para organização. Valide sempre com a Caderneta Oficial.<br>
+                        Gerado em <span id="ficha-hoje"></span>. 
                     </div>
                 </div>
             </div>
@@ -448,37 +478,17 @@
     </div>
 
     <script>
-        // ======= CONSTANTE DO LINK DO KIT PAGO =======
         const KIT_ACS_URL = "https://leothaylor.github.io/Kit-operaciona-acs-TikTok/?utm_source=radar_vacinal&utm_medium=ferramenta_gratis&utm_campaign=kit_operacional_acs"; 
-        // =============================================
 
-        // =============================================
-        // LÓGICA DO PRELOADER CINEMATOGRÁFICO
-        // =============================================
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             const logo = document.getElementById('preloader-logo');
             const spinner = document.getElementById('neon-spinner');
 
-            // Ato 2: Após 800ms, a logo faz o "Pop" no centro
-            setTimeout(() => {
-                logo.classList.add('active');
-            }, 800);
-
-            // Ato 3: Após 1.8s, o led apaga expandindo e a tela revela o app
-            setTimeout(() => {
-                spinner.classList.add('neon-fade-out');
-            }, 1800);
-
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-            }, 2100);
-
-            // Limpeza final para liberar DOM
-            setTimeout(() => {
-                preloader.remove();
-            }, 2700);
+            setTimeout(() => { logo.classList.add('active'); }, 800);
+            setTimeout(() => { spinner.classList.add('neon-fade-out'); }, 1800);
+            setTimeout(() => { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }, 2100);
+            setTimeout(() => { preloader.remove(); }, 2700);
         });
 
         lucide.createIcons();
@@ -687,7 +697,6 @@
                     else btn.className = "flex-1 py-2 rounded-full transition-colors flex items-center justify-center gap-1 hover:bg-slate-100 bg-transparent";
                     document.getElementById(`tab-${t}`).classList.add('hidden');
                 });
-                document.getElementById(`tab-${tabName}`).classList.remove('hidden');
                 
                 if(tabName === 'ficha') {
                     document.getElementById('export-target').classList.add('print:block');
@@ -731,7 +740,20 @@
                 dataList.sort((a, b) => rank[a.status] !== rank[b.status] ? rank[a.status] - rank[b.status] : a.name.localeCompare(b.name));
 
                 const listEl = document.getElementById('children-list');
-                if (!dataList.length) { listEl.innerHTML = '<p class="text-center text-sm text-slate-400 py-10">Vazio.</p>'; return; }
+                
+                // Melhoria do estado vazio
+                if (!dataList.length) { 
+                    listEl.innerHTML = `
+                    <div class="text-center py-10 bg-white rounded-xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 bg-slate-50 text-[#78C7C7] rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-700 text-sm mb-1">Nenhuma criança encontrada</h3>
+                        <p class="text-xs text-slate-500 px-4">Comece adicionando por nome ou apelido para montar seu radar vacinal.</p>
+                    </div>`; 
+                    lucide.createIcons();
+                    return; 
+                }
                 
                 listEl.innerHTML = dataList.map(c => {
                     let borderCol = 'border-slate-100', iconBg = 'bg-slate-100', iconTxt = 'text-slate-500', badge = '';
