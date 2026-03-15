@@ -41,9 +41,70 @@
         
         .print-ficha { color: black !important; background: white !important; }
         .print-ficha .print-border { border-color: #000 !important; }
+
+        /* ========================================= */
+        /* ANIMAÇÕES DO PRELOADER CINEMATOGRÁFICO    */
+        /* ========================================= */
+        #preloader {
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+        .neon-ring {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #ffffff;
+            border-right-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: spinNeon 1s linear infinite;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .neon-ring::before {
+            content: '';
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-bottom-color: rgba(255, 255, 255, 0.5);
+            animation: spinNeonReverse 2s linear infinite;
+        }
+        @keyframes spinNeon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes spinNeonReverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .logo-reveal {
+            opacity: 0;
+            transform: scale(0.3) translateY(10px);
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito "Pop" (Bounce) */
+        }
+        .logo-reveal.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .neon-fade-out {
+            opacity: 0 !important;
+            transform: scale(1.5) !important;
+        }
     </style>
 </head>
 <body class="text-slate-800 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden">
+
+    <div id="preloader" class="fixed inset-0 z-[100] bg-[#78C7C7] flex items-center justify-center">
+        <div class="relative flex items-center justify-center">
+            <div id="neon-spinner" class="neon-ring absolute"></div>
+            <img 
+                id="preloader-logo"
+                src="./logo-radar-acs.png" 
+                alt="Logo Radar" 
+                class="w-20 h-20 object-contain rounded-full relative z-10 logo-reveal"
+                onerror="this.onerror=null; this.outerHTML='<div class=\'w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center logo-reveal\' id=\'preloader-logo\'><i data-lucide=\'radar\' class=\'w-8 h-8 text-white\'></i></div>'; lucide.createIcons();"
+            >
+        </div>
+    </div>
 
     <div id="modal-dict" class="fixed inset-0 z-50 bg-slate-900/40 hidden flex-col justify-end backdrop-blur-sm view-transition">
         <div class="bg-white w-full max-w-md mx-auto h-[75vh] rounded-t-3xl shadow-2xl flex flex-col slide-up">
@@ -386,6 +447,35 @@
         // ======= CONSTANTE DO LINK DO KIT PAGO =======
         const KIT_ACS_URL = "https://leothaylor.github.io/Kit-operaciona-acs-TikTok/?utm_source=radar_vacinal&utm_medium=ferramenta_gratis&utm_campaign=kit_operacional_acs"; 
         // =============================================
+
+        // =============================================
+        // LÓGICA DO PRELOADER CINEMATOGRÁFICO
+        // =============================================
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const logo = document.getElementById('preloader-logo');
+            const spinner = document.getElementById('neon-spinner');
+
+            // Ato 2: Após 800ms, a logo faz o "Pop" no centro
+            setTimeout(() => {
+                logo.classList.add('active');
+            }, 800);
+
+            // Ato 3: Após 1.8s, o led apaga expandindo e a tela revela o app
+            setTimeout(() => {
+                spinner.classList.add('neon-fade-out');
+            }, 1800);
+
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 2100);
+
+            // Limpeza final para liberar DOM
+            setTimeout(() => {
+                preloader.remove();
+            }, 2700);
+        });
 
         lucide.createIcons();
 
