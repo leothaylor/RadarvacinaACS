@@ -219,17 +219,31 @@
                     </div>
                 </div>
 
-                <div class="btn-promo-pulse rounded-xl p-3 mb-5 flex items-center justify-between cursor-pointer transition-colors shadow-sm" onclick="window.open(KIT_ACS_URL, '_blank')">
+                <div class="btn-promo-pulse rounded-xl p-3 mb-4 flex items-center justify-between cursor-pointer transition-colors shadow-sm" onclick="window.open(KIT_ACS_URL, '_blank')">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-[#78C7C7]/10 rounded-lg flex items-center justify-center shrink-0 border border-[#78C7C7]/20">
                             <i data-lucide="briefcase" class="w-5 h-5 text-[#78C7C7]"></i>
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-slate-800">Leve isso pra prancheta</h4>
-                            <p class="text-[10px] text-slate-500 font-medium mt-0.5">Conheça o material de apoio para visita e registro</p>
+                            <h4 class="text-xs font-bold text-slate-800">SuperKit ACS — Fichas e Checklists</h4>
+                            <p class="text-[10px] text-slate-500 font-medium mt-0.5">Fichas, checklists C1–C7 e calendários para visita</p>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                </div>
+
+                <div class="rounded-xl p-3 mb-5 flex items-center justify-between bg-slate-100 border border-slate-200 shadow-sm opacity-70 cursor-not-allowed">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-slate-200 rounded-lg flex items-center justify-center shrink-0 border border-slate-300">
+                            <i data-lucide="star" class="w-5 h-5 text-slate-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-700">Radar Vacinal Premium — Em breve</h4>
+                            <p class="text-[10px] text-slate-500 font-medium mt-0.5">Nascimento até 19 anos + gestante + trabalhador de saúde</p>
+                            <p class="text-[9px] text-slate-400 mt-0.5">Inclui indicadores C2 e C7 sinalizados</p>
+                        </div>
+                    </div>
+                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
                 </div>
 
                 <div id="children-list" class="space-y-3"></div>
@@ -453,7 +467,7 @@
     </div>
 
     <script>
-        const KIT_ACS_URL = "https://leothaylor.github.io/kit-operacional-acs-Campanha/?utm_source=radar_vacinal&utm_medium=ferramenta_gratis&utm_campaign=kit_operacional_acs"; 
+        const KIT_ACS_URL = "https://pay.hotmart.com/D106253909R?utm_source=radar_vacinal_gratis&utm_medium=ferramenta&utm_campaign=superkit_acs"; 
 
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
@@ -478,7 +492,7 @@
             { idGroup: "g6_8", ageMonths: 6, ageLabel: "6 a 8 meses", doses: [{ id: "fa_exc", name: "Febre amarela", doseLabel: "casos excepcionais" }]},
             { idGroup: "g7", ageMonths: 7, ageLabel: "7 meses", doses: [{ id: "covid_2", name: "Covid-19", doseLabel: "2ª dose (Moderna ou Pfizer)" }]},
             { idGroup: "g9", ageMonths: 9, ageLabel: "9 meses", doses: [{ id: "covid_3", name: "Covid-19", doseLabel: "3ª dose (Pfizer ou Imunocomp.)" }, { id: "fa_1", name: "Febre amarela", doseLabel: "1 dose" }]},
-            { idGroup: "g12", ageMonths: 12, ageLabel: "12 meses", doses: [{ id: "pneumo_ref", name: "Pneumocócica 10-valente", doseLabel: "1 dose de reforço" }, { id: "menacwy_1", name: "Meningocócica ACWY", doseLabel: "1 dose" }, { id: "scr_1", name: "Tríplice viral SCR", doseLabel: "1ª dose" }]},
+            { idGroup: "g12", ageMonths: 12, ageLabel: "12 meses", doses: [{ id: "pneumo_ref", name: "Pneumocócica 10-valente", doseLabel: "1 dose de reforço" }, { id: "menacwy_ref", name: "Meningocócica ACWY", doseLabel: "Reforço (substituiu Men C)" }, { id: "scr_1", name: "Tríplice viral SCR", doseLabel: "1ª dose" }]},
             { idGroup: "g15", ageMonths: 15, ageLabel: "15 meses", doses: [{ id: "dtp_1", name: "DTP", doseLabel: "1 dose de reforço" }, { id: "vip_ref", name: "VIP", doseLabel: "1 dose de reforço" }, { id: "scr_2", name: "Tríplice viral SCR", doseLabel: "2ª dose" }, { id: "vari_1", name: "Varicela", doseLabel: "1ª dose" }, { id: "hepa_u", name: "Hepatite A", doseLabel: "1 dose" }]},
             { idGroup: "g48", ageMonths: 48, ageLabel: "4 anos", doses: [{ id: "dtp_2", name: "DTP", doseLabel: "2ª dose de reforço" }, { id: "fa_ref", name: "Febre amarela", doseLabel: "1 dose de reforço" }, { id: "vari_2", name: "Varicela", doseLabel: "2ª dose" }]}
         ];
@@ -491,8 +505,8 @@
             { vac: "VIP", desc: "Poliomielite (Paralisia Infantil)." },
             { vac: "Pneumocócica 10-valente", desc: "Pneumonia, otite e meningite por pneumococo." },
             { vac: "Rotavírus humano", desc: "Diarreia grave causada por rotavírus." },
-            { vac: "Meningocócica C", desc: "Meningite e infecções generalizadas tipo C." },
-            { vac: "Meningocócica ACWY", desc: "Meningite e infecções generalizadas tipos A, C, W, Y." },
+            { vac: "Meningocócica C", desc: "Meningite e infecções generalizadas tipo C. (Esquema básico: 3 e 5 meses)" },
+            { vac: "Meningocócica ACWY", desc: "Meningite e infecções generalizadas tipos A, C, W, Y. (Reforço aos 12 meses — substituiu o reforço de Men C)" },
             { vac: "Influenza trivalente", desc: "Infecções pelo vírus da Influenza (Gripe)." },
             { vac: "Covid-19", desc: "Formas graves de Covid-19." },
             { vac: "Febre amarela", desc: "Infecção por Febre Amarela." },
