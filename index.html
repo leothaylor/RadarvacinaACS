@@ -387,11 +387,31 @@
         <div id="detail-content-area" class="flex-1 overflow-y-auto px-5 pt-6 pb-12 w-full relative z-10">
             
             <div id="tab-proximas" class="space-y-6">
-                <div id="msg-all-done" class="hidden text-center py-10">
-                    <div class="w-14 h-14 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i data-lucide="check" class="w-7 h-7"></i>
+                <div id="msg-all-done" class="hidden">
+                    <div class="text-center py-8">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="check" class="w-7 h-7"></i>
+                        </div>
+                        <p class="font-bold text-slate-800">Calendário em dia!</p>
+                        <p class="text-xs text-slate-400 mt-1">Este radar cobre vacinas até os 4 anos de idade.</p>
                     </div>
-                    <p class="font-bold text-slate-800">Calendário em dia!</p>
+                    <div id="msg-premium-proximas" class="hidden mt-2 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i data-lucide="lock" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                            <p class="text-[11px] font-black text-slate-600 uppercase tracking-wide">Radar Vacinal Premium</p>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3 leading-relaxed">A partir dos 5 anos, o acompanhamento vacinal continua. O Premium cobre:</p>
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>5 anos — avaliação e resgate</div>
+                            <div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>9 anos — HPV dose única</div>
+                            <div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>10 anos — Dengue/Qdenga</div>
+                            <div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>11–14 anos — Meningocócica ACWY</div>
+                            <div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>Gestante, trabalhador de saúde e indicadores C2 e C7</div>
+                        </div>
+                        <button onclick="window.open('https://pay.hotmart.com/D106253909R?utm_source=radar_vacinal_gratis&utm_medium=preview_proximas&utm_campaign=radar_premium', '_blank')" class="w-full bg-[#78C7C7] text-white font-bold py-2.5 rounded-xl text-xs shadow-sm hover:bg-teal-500 transition-colors">
+                            Em breve — saiba mais
+                        </button>
+                    </div>
                 </div>
 
                 <div id="sec-delayed" class="hidden">
@@ -413,6 +433,22 @@
             <div id="tab-cronograma" class="hidden">
                 <p class="text-[11px] text-slate-500 mb-4 text-center">Toque nas caixas vazias para marcar como aplicadas.</p>
                 <div class="relative border-l-2 border-slate-200 ml-4 space-y-6" id="timeline-container"></div>
+
+                <div id="premium-block-calendario" class="hidden mt-4 relative pl-5">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 border-2 border-white shadow-sm"></div>
+                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                            <h4 class="font-bold text-slate-500 text-xs uppercase tracking-wide">5 anos em diante — Radar Premium</h4>
+                        </div>
+                        <div class="space-y-1 mb-3">
+                            <p class="text-[11px] text-slate-400">HPV · Dengue/Qdenga · Men ACWY · dT · Gestante · Trabalhador de saúde · Indicadores C2 e C7</p>
+                        </div>
+                        <button onclick="window.open('https://pay.hotmart.com/D106253909R?utm_source=radar_vacinal_gratis&utm_medium=preview_calendario&utm_campaign=radar_premium', '_blank')" class="w-full bg-slate-200 text-slate-600 font-bold py-2 rounded-lg text-xs hover:bg-slate-300 transition-colors flex items-center justify-center gap-1.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5"></i> Em breve — saiba mais
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div id="tab-ficha" class="hidden print-ficha">
@@ -1038,6 +1074,32 @@
                         </div>`;
                     });
                     document.getElementById('timeline-container').innerHTML = tlHTML;
+
+                    // Calcular idade em meses para exibir prévia premium contextualmente
+                    const birthD = new Date(child.birthDate + 'T12:00:00');
+                    const now = new Date();
+                    let ageInMonths = (now.getFullYear() - birthD.getFullYear()) * 12 + (now.getMonth() - birthD.getMonth());
+                    if (now.getDate() < birthD.getDate()) ageInMonths--;
+
+                    // Mostrar prévia premium no Calendário após os 4 anos (48 meses)
+                    const premiumBlockCalendario = document.getElementById('premium-block-calendario');
+                    if (premiumBlockCalendario) {
+                        if (ageInMonths >= 36) {
+                            premiumBlockCalendario.classList.remove('hidden');
+                        } else {
+                            premiumBlockCalendario.classList.add('hidden');
+                        }
+                    }
+
+                    // Mostrar prévia premium na aba Próximas quando calendário estiver em dia e criança >= 3 anos
+                    const premiumProximas = document.getElementById('msg-premium-proximas');
+                    if (premiumProximas) {
+                        if (!atrasadas.length && !alerta.length && !futuras.length && ageInMonths >= 36) {
+                            premiumProximas.classList.remove('hidden');
+                        } else {
+                            premiumProximas.classList.add('hidden');
+                        }
+                    }
 
                     document.getElementById('ficha-nome').textContent = child.name; 
                     document.getElementById('ficha-nasc').textContent = `${d}/${m}/${y}`; 
